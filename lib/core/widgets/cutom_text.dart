@@ -1,8 +1,8 @@
 import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class CutomText extends StatelessWidget {
-  const CutomText({super.key, required this.text});
+class CustomText extends StatelessWidget {
+  const CustomText({super.key, required this.text});
 
   final String text;
   @override
