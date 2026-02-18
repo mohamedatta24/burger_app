@@ -1,3 +1,4 @@
+import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -8,12 +9,12 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap ,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         height: 55,
         decoration: BoxDecoration(
-          color: Color(0xffDE6717),
+          color: AppColors.orange,
           borderRadius: BorderRadius.circular(7.0),
         ),
         child: Center(
@@ -21,7 +22,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: 18.0,
-              color: Color(0xff131214),
+              color: AppColors.background,
               fontWeight: FontWeight.bold,
             ),
           ),

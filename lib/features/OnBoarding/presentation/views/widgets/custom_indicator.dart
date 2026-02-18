@@ -1,3 +1,4 @@
+import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -18,8 +19,8 @@ class CustomIndicator extends StatelessWidget {
         dotHeight: 8.0,
         paintStyle: PaintingStyle.fill,
         strokeWidth: 1.5,
-        dotColor: Color(0xffB0B0B0),
-        activeDotColor: Color(0xffDE6717),
+        dotColor: AppColors.grey,
+        activeDotColor: AppColors.orange,
       ),
     );
   }

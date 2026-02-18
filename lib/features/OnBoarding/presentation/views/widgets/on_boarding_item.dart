@@ -1,3 +1,4 @@
+import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:burger_app/features/OnBoarding/models/on_boarding_item_model.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class OnBoardingItem extends StatelessWidget {
           onBoardingItemModel.title,
           style: TextStyle(
             fontSize: 24.0,
-            color: Colors.white,
+            color: AppColors.white,
             fontFamily: "Rubik Dirt",
           ),
         ),
@@ -25,7 +26,7 @@ class OnBoardingItem extends StatelessWidget {
           child: Text(
             textAlign: TextAlign.center,
             onBoardingItemModel.subTitle,
-            style: TextStyle(fontSize: 16.0, color: Color(0xffB0B0B0)),
+            style: TextStyle(fontSize: 16.0, color: AppColors.grey),
           ),
         ),
       ],
