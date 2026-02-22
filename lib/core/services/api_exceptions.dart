@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:burger_app/core/services/api_error.dart';
 import 'package:dio/dio.dart';
 
@@ -11,6 +12,9 @@ class ApiExceptions {
   static const String unknownError = 'Unknown error occurred';
 
   static ApiError handleException(DioException exception) {
+    if (exception.error is SocketException) {
+      return ApiError(message: noInternetConnection);
+    }
     switch (exception.type) {
       case DioExceptionType.connectionTimeout:
         return ApiError(message: noInternetConnection);
@@ -22,6 +26,7 @@ class ApiExceptions {
         final statusCode = exception.response?.statusCode;
         final message =
             exception.response?.data['message'] ?? 'An error occurred';
+
         return ApiError(message: message, statusCode: statusCode);
       case DioExceptionType.cancel:
         return ApiError(message: 'Request cancelled');

@@ -1,9 +1,11 @@
+import 'package:burger_app/core/services/api_error.dart';
 import 'package:burger_app/core/services/api_exceptions.dart';
 import 'package:burger_app/core/services/dio_client.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
-  final DioClient _dioClient = DioClient();
+  final DioClient _dioClient;
+  ApiService({required DioClient dioClient}) : _dioClient = dioClient;
 
   // GET request
   Future<dynamic> get({required String endPoint}) async {
@@ -12,6 +14,8 @@ class ApiService {
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleException(e);
+    } catch (e) {
+      throw ApiError(message: e.toString());
     }
   }
 
@@ -25,6 +29,8 @@ class ApiService {
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleException(e);
+    } catch (e) {
+      throw ApiError(message: e.toString());
     }
   }
 
@@ -38,6 +44,8 @@ class ApiService {
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleException(e);
+    } catch (e) {
+      throw ApiError(message: e.toString());
     }
   }
 
@@ -48,6 +56,8 @@ class ApiService {
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleException(e);
+    } catch (e) {
+      throw ApiError(message: e.toString());
     }
   }
 }

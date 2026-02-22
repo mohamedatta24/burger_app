@@ -6,12 +6,22 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.suffixIcon,
+    this.controller,
   });
   final String hintText;
   final IconData suffixIcon;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: const TextStyle(color: AppColors.white),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "Please enter your $hintText";
+        }
+        return null;
+      },
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(),
