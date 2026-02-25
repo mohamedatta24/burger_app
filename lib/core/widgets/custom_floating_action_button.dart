@@ -6,20 +6,27 @@ class CustomFloatingActionButton extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.icon,
+    required this.colorButton,
+    this.heroTag,
   });
 
   final void Function()? onPressed;
   final IconData icon;
+
+  final Color colorButton;
+  final Object? heroTag;
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      heroTag: heroTag,
       elevation: 0.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(50.0),
       ),
       onPressed: onPressed,
       mini: true,
-      backgroundColor: AppColors.background,
+      backgroundColor: colorButton,
       child: Icon(icon, color: AppColors.white, size: 16.0),
     );
   }

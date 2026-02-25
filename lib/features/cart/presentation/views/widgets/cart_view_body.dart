@@ -1,3 +1,6 @@
+import 'package:burger_app/core/widgets/custom_button.dart';
+import 'package:burger_app/core/widgets/total_price.dart';
+import 'package:burger_app/features/cart/presentation/views/widgets/cart_item_list_view.dart';
 import 'package:flutter/material.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -5,15 +8,24 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          Text('Cart View Body',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Colors.white,
-          ),),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+          const Expanded(child: CartItemListView()),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: CustomButton(text: "Checkout", onTap: () {}),
+                ),
+                const SizedBox(width: 50.0),
+                const TotalPrice(),
+              ],
+            ),
+          ),
         ],
       ),
     );
