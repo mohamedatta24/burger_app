@@ -21,7 +21,7 @@ class QuantityCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
       decoration: BoxDecoration(
         color: backgroundColor ?? AppColors.backgroundDark,
         borderRadius: BorderRadius.circular(50.0),

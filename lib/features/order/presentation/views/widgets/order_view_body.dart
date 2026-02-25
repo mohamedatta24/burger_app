@@ -1,3 +1,4 @@
+import 'package:burger_app/features/order/presentation/views/widgets/order_item_list_view.dart';
 import 'package:flutter/material.dart';
 
 class OrderViewBody extends StatelessWidget {
@@ -5,16 +6,16 @@ class OrderViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Text('Order View Body',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Colors.white,
-          ),),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            const OrderItemListView(),
+          ],
+        ),
       ),
     );
   }
