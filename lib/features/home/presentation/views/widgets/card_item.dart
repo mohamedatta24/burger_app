@@ -1,5 +1,6 @@
 import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:burger_app/core/utils/app_images.dart';
+import 'package:burger_app/features/product_detiils/presentation/views/product_detiils_view.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
@@ -7,50 +8,58 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundDark,
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(child: Image.asset(Assets.imagesCard2, fit: BoxFit.fill)),
-          Text(
-            "Cheeseburger\nWendy's Burger",
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 14.0,
-              fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProductDetiilsView()),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: AppColors.backgroundDark,
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: Image.asset(Assets.imagesCard2, fit: BoxFit.fill)),
+            const Text(
+              "Cheeseburger\nWendy's Burger",
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: 8.0),
-          Row(
-            children: [
-              Icon(Icons.star, color: AppColors.orange, size: 18.0),
-              Icon(Icons.star, color: AppColors.orange, size: 18.0),
-              SizedBox(width: 5.0),
-              Text(
-                "4.5",
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
+            const SizedBox(height: 8.0),
+            Row(
+              children: [
+                const Icon(Icons.star, color: AppColors.orange, size: 18.0),
+                const Icon(Icons.star, color: AppColors.orange, size: 18.0),
+                const SizedBox(width: 5.0),
+                const Text(
+                  "4.5",
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Spacer(),
-              Text(
-                "\$ 5.99",
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
+                const Spacer(),
+                const Text(
+                  "\$ 5.99",
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

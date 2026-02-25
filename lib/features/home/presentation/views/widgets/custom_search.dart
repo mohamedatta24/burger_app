@@ -26,7 +26,7 @@ class CustomSearch extends StatelessWidget {
   OutlineInputBorder buildOutlineInputBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(7.0),
-      borderSide: BorderSide(color: AppColors.backgroundDark, width: 2.0),
+      borderSide: const BorderSide(color: AppColors.backgroundDark, width: 2.0),
     );
   }
 }

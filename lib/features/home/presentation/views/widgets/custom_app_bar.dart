@@ -3,9 +3,7 @@ import 'package:burger_app/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-  });
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Column(
           children: [
-            Text(
+            const Text(
               "Burger?",
               style: TextStyle(
                 fontSize: 32.0,
@@ -22,8 +20,8 @@ class CustomAppBar extends StatelessWidget {
                 fontFamily: "Rubik Dirt",
               ),
             ),
-    
-            Text(
+
+            const Text(
               "Hello, Mohamed Atta",
               style: TextStyle(
                 fontSize: 14.0,
@@ -33,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
-    
+
         Image.asset(Assets.imagesUserPhoto, width: 50.0, height: 50.0),
       ],
     );

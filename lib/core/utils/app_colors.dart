@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
-
+  
   static const Color background = Color(0xff131214);
   static const Color backgroundDark = Color(0xff1B1C1F);
   static const Color orange = Color(0xffDE6717);

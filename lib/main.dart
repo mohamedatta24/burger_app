@@ -9,7 +9,7 @@ void main() async {
   dependencyInjection();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => const BurgerApp(), // Wrap your app
     ),
   );
