@@ -38,9 +38,8 @@ class AuthRepoImpl implements AuthRepo {
         endPoint: "/register",
         body: {"name": name, "email": email, "password": password},
       );
-      final user = UserModel.fromJson(response);
-      
 
+      final user = UserModel.fromJson(response);
 
       return Right(user);
     } catch (e) {
