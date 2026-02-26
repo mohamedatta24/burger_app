@@ -19,6 +19,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      enableFeedback: false,
       heroTag: heroTag,
       elevation: 0.0,
       shape: RoundedRectangleBorder(

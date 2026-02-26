@@ -12,7 +12,7 @@ class CartItemListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
-          child: const CartItem(),
+          child: CartItem(index: index),
         );
       },
     );

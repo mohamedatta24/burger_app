@@ -10,6 +10,8 @@ class QuantityCounter extends StatelessWidget {
     required this.onAdd,
     this.backgroundColor,
     this.colorButton,
+    this.heroTagOnRemove,
+    this.heroTagOnAdd,
   });
 
   final void Function()? onRemove;
@@ -17,6 +19,8 @@ class QuantityCounter extends StatelessWidget {
   final void Function()? onAdd;
   final Color? backgroundColor;
   final Color? colorButton;
+  final Object? heroTagOnRemove;
+  final Object? heroTagOnAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class QuantityCounter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomFloatingActionButton(
-            heroTag: "remove",
+            heroTag: heroTagOnRemove,
             colorButton: colorButton ?? AppColors.background,
             icon: Icons.remove,
             onPressed: onRemove,
@@ -46,7 +50,7 @@ class QuantityCounter extends StatelessWidget {
           ),
           const SizedBox(width: 16.0),
           CustomFloatingActionButton(
-            heroTag: "add",
+            heroTag: onAdd,
             colorButton: colorButton ?? AppColors.background,
             icon: Icons.add,
             onPressed: onAdd,

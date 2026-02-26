@@ -4,8 +4,15 @@ import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/core/widgets/quantity_counter.dart';
 import 'package:flutter/material.dart';
 
-class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+class CartItem extends StatefulWidget {
+  const CartItem({super.key, required this.index});
+  final int index;
+  @override
+  State<CartItem> createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +42,25 @@ class CartItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(width: 32.0),
+          const SizedBox(width: 16.0),
           Expanded(
             child: Column(
               children: [
                 QuantityCounter(
+                  heroTagOnAdd: "add_btn_${widget.index}",
+                  heroTagOnRemove: "remove_btn_${widget.index}",
                   colorButton: AppColors.backgroundDark,
-                  onRemove: () {},
-                  quantity: 1,
-                  onAdd: () {},
+                  quantity: quantity,
+                  onAdd: () {
+                    setState(() {
+                      quantity++;
+                    });
+                  },
+                  onRemove: () {
+                    setState(() {
+                      if (quantity > 1) quantity--;
+                    });
+                  },
                   backgroundColor: AppColors.background,
                 ),
                 const SizedBox(height: 10.0),

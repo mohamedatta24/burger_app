@@ -18,7 +18,7 @@ class TotalPrice extends StatelessWidget {
         ),
         const SizedBox(height: 4.0),
         const Text(
-          "\$ 5.99",
+          "\$18.99",
           style: TextStyle(
             color: AppColors.white,
             fontSize: 26.0,
