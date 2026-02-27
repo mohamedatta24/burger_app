@@ -20,7 +20,13 @@ class BurgerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: AppColors.background),
+      theme: ThemeData(
+        appBarTheme: AppBarThemeData(
+          elevation: 0.0,
+          backgroundColor: AppColors.background,
+        ),
+        scaffoldBackgroundColor: AppColors.background,
+      ),
 
       debugShowCheckedModeBanner: false,
       home: const MainBottomNavBar(),
