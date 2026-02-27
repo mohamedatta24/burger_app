@@ -7,7 +7,7 @@ class CustomSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      cursorColor: AppColors.white,
+      cursorColor: AppColors.grey,
       style: const TextStyle(
         color: AppColors.white,
         fontWeight: FontWeight.bold,

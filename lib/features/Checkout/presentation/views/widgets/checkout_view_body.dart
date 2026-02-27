@@ -1,4 +1,5 @@
 import 'package:burger_app/core/widgets/custom_button.dart';
+import 'package:burger_app/core/widgets/custom_success.dart';
 import 'package:burger_app/core/widgets/cutom_text.dart';
 import 'package:burger_app/core/widgets/total_price.dart';
 import 'package:burger_app/features/Checkout/presentation/views/widgets/checkout_item_section.dart';
@@ -23,7 +24,19 @@ class CheckoutViewBody extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: CustomButton(text: "Pay Now", onTap: () {}),
+                child: CustomButton(
+                  text: "Pay Now",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const CustomSuccess();
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
               const SizedBox(width: 50.0),
               const TotalPrice(),
