@@ -5,10 +5,10 @@ import 'package:dio/dio.dart';
 
 class ApiService {
   final DioClient _dioClient;
-  ApiService({required DioClient dioClient}) : _dioClient = dioClient;
+  ApiService(this._dioClient);
 
   // GET request
-  Future<dynamic> get({required String endPoint}) async {
+  Future<dynamic> get(String endPoint) async {
     try {
       final response = await _dioClient.dio.get(endPoint);
       return response.data;
@@ -20,10 +20,7 @@ class ApiService {
   }
 
   // POST request
-  Future<dynamic> post({
-    required String endPoint,
-    required Map<String, dynamic> body,
-  }) async {
+  Future<dynamic> post(String endPoint, Map<String, dynamic> body) async {
     try {
       final response = await _dioClient.dio.post(endPoint, data: body);
       return response.data;
@@ -50,7 +47,7 @@ class ApiService {
   }
 
   // DELETE request
-  Future<dynamic> delete({required String endPoint}) async {
+  Future<dynamic> delete(String endPoint) async {
     try {
       final response = await _dioClient.dio.delete(endPoint);
       return response.data;

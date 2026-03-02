@@ -13,4 +13,7 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+
+  Future<Either<ApiError, UserEntity>> getProfileData();
+  // Future<Either<ApiError, UserEntity>> updateProfileData();
 }

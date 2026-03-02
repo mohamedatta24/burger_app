@@ -1,6 +1,6 @@
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/core/widgets/cutom_text.dart';
-import 'package:burger_app/features/auth/presentation/signup/signup_cubit.dart';
+import 'package:burger_app/features/auth/presentation/signup_cubits/signup_cubit.dart';
 import 'package:burger_app/features/auth/presentation/views/widgets/already_have_an_account.dart';
 import 'package:burger_app/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
