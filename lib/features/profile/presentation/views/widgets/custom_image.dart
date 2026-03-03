@@ -20,8 +20,8 @@ class CustomImage extends StatelessWidget {
           backgroundImage: image != null && image!.isNotEmpty
               ? (image!.startsWith("http")
                     ? NetworkImage(image!)
-                    : FileImage(File(image!)) as ImageProvider)
-              : AssetImage(Assets.imagesUserPhoto),
+                    : FileImage(File(image!)))
+              : const AssetImage(Assets.imagesUserPhoto),
         ),
 
         Positioned(

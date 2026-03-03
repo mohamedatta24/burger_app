@@ -49,9 +49,9 @@ class AuthRepoImpl implements AuthRepo {
       });
 
       final user = UserModel.fromJson(response);
-      if (user.token != null) {
-        SharedPref.saveToken(user.token!);
-      }
+      // if (user.token != null) {
+      //   SharedPref.saveToken(user.token!);
+      // }
 
       return Right(user);
     } catch (e) {
@@ -73,6 +73,31 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
-  // @override
-  // Future<Either<ApiError, UserEntity>> updateProfileData() {}
+  /// ================= update Profile =================
+  @override
+  Future<Either<ApiError, UserEntity>> updateProfileData({
+    required String name,
+    required String email,
+    required String address,
+    String? imagePath,
+    String? visa,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        "name": name,
+        "email": email,
+        "address": address,
+        if (imagePath != null && imagePath.isNotEmpty)
+          "image": await MultipartFile.fromFile(imagePath, filename: "profile.jpg"),
+        if (visa != null && visa.isNotEmpty) "Visa": visa,
+      });
+      final response = await apiService.post("/update-profile", formData);
+      final user = UserModel.fromJson(response);
+      return Right(user);
+    } on DioException catch (e) {
+      return Left(ApiExceptions.handleException(e));
+    } catch (e) {
+      return Left(ApiError(message: "Unexpected error occurred"));
+    }
+  }
 }

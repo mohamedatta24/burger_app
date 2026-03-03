@@ -15,5 +15,11 @@ abstract class AuthRepo {
   });
 
   Future<Either<ApiError, UserEntity>> getProfileData();
-  // Future<Either<ApiError, UserEntity>> updateProfileData();
+  Future<Either<ApiError, UserEntity>> updateProfileData({
+    required String name,
+    required String email,
+    required String address,
+    String? imagePath,
+    String? visa,
+  });
 }

@@ -3,7 +3,7 @@ import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/core/widgets/paymen_button.dart';
-import 'package:burger_app/features/auth/presentation/getprofiledata_cubits/getprofiledata_cubit.dart';
+import 'package:burger_app/features/auth/presentation/profiledata_cubits/profiledata_cubit.dart';
 import 'package:burger_app/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:burger_app/features/profile/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   String? selectedImage;
   String? image;
+
   Future<void> pickImage() async {
     final pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
@@ -42,29 +43,31 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<GetprofiledataCubit>().getProfileData();
+    context.read<ProfiledataCubit>().getProfileData();
   }
 
   @override
   void dispose() {
     nameController.dispose();
     emailController.dispose();
+    addressController.dispose();
+    visaController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetprofiledataCubit, GetprofiledataState>(
+    return BlocConsumer<ProfiledataCubit, ProfiledataState>(
       listener: (context, state) {
-        if (state is GetprofiledataSuccess) {
+        if (state is ProfiledataSuccess) {
           nameController.text = state.userEntity.name;
           emailController.text = state.userEntity.email;
           addressController.text = state.userEntity.address ?? "DBA22";
-          visaController.text = state.userEntity.visa ?? "3566 **** **** 0505";
-          image = state.userEntity.image;
+          visaController.text = state.userEntity.visa ?? visaController.text;
+          image ??= state.userEntity.image;
         }
 
-        if (state is GetprofiledataFailure) {
+        if (state is ProfiledataFailure) {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
@@ -75,7 +78,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Skeletonizer(
             containersColor: AppColors.backgroundDark,
-            enabled: state is GetprofiledataLoading,
+            enabled: state is ProfiledataLoading,
             child: Column(
               children: [
                 Expanded(
@@ -106,40 +109,61 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                             suffixIcon: Icons.delivery_dining,
                           ),
                           const SizedBox(height: 16),
-                          CustomTextFormField(
-                            controller: visaController,
-                            hintText: "visa",
-                            suffixIcon: Icons.money,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 32),
 
-                      PaymenButton(
-                        value: PaymentMethod.card,
-                        groupValue: selectedMethod,
-                        image: Assets.imagesVisa,
-                        title: "Debit Card",
-                        subtitle: Text(
-                          visaController.text.toString(),
-                          style: TextStyle(
-                            color: AppColors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onChanged: (value) {
-                          setState(() => selectedMethod = value!);
-                        },
+                          if (state is ProfiledataSuccess)
+                            state.userEntity.visa == null
+                                ? CustomTextFormField(
+                                    controller: visaController,
+                                    hintText: "visa",
+                                    suffixIcon: Icons.money,
+                                  )
+                                : Column(
+                                    children: [
+                                      const SizedBox(height: 32),
+                                      PaymenButton(
+                                        value: PaymentMethod.card,
+                                        groupValue: selectedMethod,
+                                        image: Assets.imagesVisa,
+                                        title: "Debit Card",
+                                        subtitle: Text(
+                                          visaController.text.toString(),
+                                          style: TextStyle(
+                                            color: AppColors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        onChanged: (value) {
+                                          setState(
+                                            () => selectedMethod = value!,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                        ],
                       ),
                     ],
                   ),
                 ),
 
                 Row(
-                  children: const [
-                    Expanded(child: CustomButton(text: "Edit Profile")),
-                    SizedBox(width: 32),
-                    Expanded(child: CustomButton(text: "Log out")),
+                  children: [
+                    Expanded(
+                      child: CustomButton(
+                        text: "Edit Profile",
+                        onTap: () {
+                          context.read<ProfiledataCubit>().updateProfileData(
+                            name: nameController.text,
+                            email: emailController.text,
+                            address: addressController.text,
+                            visa: visaController.text ,
+                            imagePath: selectedImage ?? '',
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 32),
+                    const Expanded(child: CustomButton(text: "Log out")),
                   ],
                 ),
                 const SizedBox(height: 16),
