@@ -88,7 +88,10 @@ class AuthRepoImpl implements AuthRepo {
         "email": email,
         "address": address,
         if (imagePath != null && imagePath.isNotEmpty)
-          "image": await MultipartFile.fromFile(imagePath, filename: "profile.jpg"),
+          "image": await MultipartFile.fromFile(
+            imagePath,
+            filename: "profile.jpg",
+          ),
         if (visa != null && visa.isNotEmpty) "Visa": visa,
       });
       final response = await apiService.post("/update-profile", formData);
@@ -99,5 +102,14 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       return Left(ApiError(message: "Unexpected error occurred"));
     }
+  }
+
+  @override
+  Future<void> logout() async {
+    final response = await apiService.post("/logout", {});
+    if (response['data'] != null) {
+      throw ApiError(message: "Unexpected error occurred");
+    }
+    await SharedPref.clearToken();
   }
 }

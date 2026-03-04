@@ -22,4 +22,6 @@ abstract class AuthRepo {
     String? imagePath,
     String? visa,
   });
+
+  Future<void> logout();
 }
