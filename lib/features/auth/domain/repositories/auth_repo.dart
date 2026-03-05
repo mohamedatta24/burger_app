@@ -23,5 +23,13 @@ abstract class AuthRepo {
     String? visa,
   });
 
+
+   // Auto Login
+  Future<Either<ApiError, UserEntity>> autoLogin();
+
+
   Future<void> logout();
+
+
+
 }

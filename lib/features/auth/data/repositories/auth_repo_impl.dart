@@ -112,4 +112,26 @@ class AuthRepoImpl implements AuthRepo {
     }
     await SharedPref.clearToken();
   }
+
+  @override
+  Future<Either<ApiError, UserEntity>> autoLogin() async {
+    try {
+      final token = await SharedPref.getToken();
+
+      if (token == null || token.isEmpty) {
+        return Left(ApiError(message: "No token found"));
+      }
+
+      final response = await apiService.get("/profile");
+      final user = UserModel.fromJson(response);
+
+      return Right(user);
+    } on DioException catch (e) {
+      await SharedPref.clearToken();
+      return Left(ApiExceptions.handleException(e));
+    } catch (e) {
+      await SharedPref.clearToken();
+      return Left(ApiError(message: "Auto login failed"));
+    }
+  }
 }

@@ -4,6 +4,7 @@ import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:burger_app/features/auth/presentation/login_cubits/login_cubit.dart';
 import 'package:burger_app/features/auth/presentation/views/login_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/main_bottom_nav_bar.dart';
+import 'package:burger_app/features/splash/presentation/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ class BurgerApp extends StatelessWidget {
         ),
 
         debugShowCheckedModeBanner: false,
-        home: const LoginView(),
+        home: SplashView(),
       ),
     );
   }

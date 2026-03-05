@@ -4,6 +4,7 @@ import 'package:burger_app/features/auth/data/repositories/auth_repo_impl.dart';
 import 'package:burger_app/features/auth/domain/repositories/auth_repo.dart';
 import 'package:burger_app/features/auth/presentation/profiledata_cubits/profiledata_cubit.dart';
 import 'package:burger_app/features/auth/presentation/login_cubits/login_cubit.dart';
+import 'package:burger_app/features/auth/presentation/session_cubits/session_cubit.dart';
 import 'package:burger_app/features/auth/presentation/signup_cubits/signup_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -21,4 +22,5 @@ void dependencyInjection() {
   getIt.registerFactory<ProfiledataCubit>(
     () => ProfiledataCubit(getIt<AuthRepo>()),
   );
+  getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt<AuthRepo>()));
 }
