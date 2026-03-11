@@ -2,8 +2,9 @@ import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class TotalPrice extends StatelessWidget {
-  const TotalPrice({super.key});
+  const TotalPrice({super.key, this.price});
 
+  final String? price;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,9 +18,9 @@ class TotalPrice extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4.0),
-        const Text(
-          "\$18.99",
-          style: TextStyle(
+        Text(
+          "\$$price",
+          style: const TextStyle(
             color: AppColors.white,
             fontSize: 26.0,
             fontWeight: FontWeight.bold,

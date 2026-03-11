@@ -1,9 +1,10 @@
+import 'package:burger_app/features/home/domain/entities/product_entity.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/card_item.dart';
 import 'package:flutter/material.dart';
 
 class CardItemGridView extends StatelessWidget {
-  const CardItemGridView({super.key});
-
+  const CardItemGridView({super.key, required this.items});
+  final List<ProductEntity> items;
   @override
   Widget build(BuildContext context) {
     int crossAxisCount = 2;
@@ -11,13 +12,13 @@ class CardItemGridView extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     if (screenWidth < 700) {
       crossAxisCount = 2;
-      mainAxisExtent = 225.0;
+      mainAxisExtent = 245.0;
     } else if (screenWidth < 900) {
       crossAxisCount = 3;
-      mainAxisExtent = 230.0;
+      mainAxisExtent = 250.0;
     } else {
       crossAxisCount = 4;
-      mainAxisExtent = 235.0;
+      mainAxisExtent = 255.0;
     }
 
     return GridView.builder(
@@ -29,9 +30,9 @@ class CardItemGridView extends StatelessWidget {
         mainAxisSpacing: 12.0,
         crossAxisCount: crossAxisCount,
       ),
-      itemCount: 13,
+      itemCount: items.length,
       itemBuilder: (context, index) {
-        return const CardItem();
+        return CardItem(productEntity: items[index]);
       },
     );
   }

@@ -4,7 +4,6 @@ import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/core/widgets/paymen_button.dart';
 import 'package:burger_app/features/auth/presentation/profiledata_cubits/profiledata_cubit.dart';
-import 'package:burger_app/features/auth/presentation/views/login_view.dart';
 import 'package:burger_app/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:burger_app/features/profile/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';

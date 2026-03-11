@@ -2,7 +2,6 @@ import 'package:burger_app/core/utils/app_colors.dart';
 import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/features/auth/presentation/session_cubits/session_cubit.dart';
 import 'package:burger_app/features/auth/presentation/views/login_view.dart';
-import 'package:burger_app/features/home/presentation/views/home_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/main_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +18,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<SessionCubit>().checkSession();
+    Future.delayed(const Duration(seconds: 2), () {
+      context.read<SessionCubit>().checkSession();
+    });
   }
 
   @override
@@ -52,9 +53,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           children: [
             SvgPicture.asset(Assets.imagesSplash),
             const SizedBox(height: 20),
-            const CircularProgressIndicator(
-              color: AppColors.grey,
-            ),
+            const CircularProgressIndicator(color: AppColors.grey),
           ],
         ),
       ),

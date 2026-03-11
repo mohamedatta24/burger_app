@@ -6,6 +6,12 @@ import 'package:burger_app/features/auth/presentation/profiledata_cubits/profile
 import 'package:burger_app/features/auth/presentation/login_cubits/login_cubit.dart';
 import 'package:burger_app/features/auth/presentation/session_cubits/session_cubit.dart';
 import 'package:burger_app/features/auth/presentation/signup_cubits/signup_cubit.dart';
+import 'package:burger_app/features/cart/data/repositories/cart_repo_impl.dart';
+import 'package:burger_app/features/cart/domain/repositories/cart_repo.dart';
+import 'package:burger_app/features/cart/presentation/cart_cubits/cart_cubit.dart';
+import 'package:burger_app/features/home/data/repositories/product_repo_impl.dart';
+import 'package:burger_app/features/home/domain/repositories/product_repo.dart';
+import 'package:burger_app/features/home/presentation/product_cubits/product_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -23,4 +29,14 @@ void dependencyInjection() {
     () => ProfiledataCubit(getIt<AuthRepo>()),
   );
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt<AuthRepo>()));
+
+  getIt.registerFactory<ProductRepo>(
+    () => ProductRepoImpl(apiService: getIt<ApiService>()),
+  );
+  getIt.registerFactory<ProductCubit>(() => ProductCubit(getIt<ProductRepo>()));
+  getIt.registerFactory<CartRepo>(
+    () => CartRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 }

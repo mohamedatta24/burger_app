@@ -7,12 +7,13 @@ class QuantityPrice extends StatelessWidget {
     super.key,
     this.onRemove,
     this.onAdd,
-    required this.quantity,
+    required this.quantity, required this.price,
   });
 
   final void Function()? onRemove;
   final void Function()? onAdd;
   final int quantity;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class QuantityPrice extends StatelessWidget {
       children: [
         QuantityCounter(onRemove: onRemove, quantity: quantity, onAdd: onAdd),
         const Spacer(),
-        const TotalPrice(),
+        TotalPrice(
+          price: price,
+        ),
       ],
     );
   }
