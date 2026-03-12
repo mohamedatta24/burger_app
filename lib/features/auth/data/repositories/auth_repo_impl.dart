@@ -1,9 +1,7 @@
 import 'package:burger_app/core/services/api_error.dart';
 import 'package:burger_app/core/services/api_exceptions.dart';
-
 import 'package:burger_app/core/services/api_service.dart';
 import 'package:burger_app/core/services/shared_pref.dart';
-
 import 'package:burger_app/features/auth/data/models/user_model.dart';
 import 'package:burger_app/features/auth/domain/entities/user_entity.dart';
 import 'package:burger_app/features/auth/domain/repositories/auth_repo.dart';
@@ -14,6 +12,7 @@ class AuthRepoImpl implements AuthRepo {
   final ApiService apiService;
   AuthRepoImpl({required this.apiService});
 
+  /// ================= Post login =================
   @override
   Future<Either<ApiError, UserEntity>> login({
     required String email,
@@ -35,6 +34,7 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+  /// ================= Post signup =================
   @override
   Future<Either<ApiError, UserEntity>> signup({
     required String name,
@@ -49,9 +49,6 @@ class AuthRepoImpl implements AuthRepo {
       });
 
       final user = UserModel.fromJson(response);
-      // if (user.token != null) {
-      //   SharedPref.saveToken(user.token!);
-      // }
 
       return Right(user);
     } catch (e) {
@@ -104,6 +101,7 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+  /// ================= Post logout =================
   @override
   Future<void> logout() async {
     final response = await apiService.post("/logout", {});
@@ -113,6 +111,7 @@ class AuthRepoImpl implements AuthRepo {
     await SharedPref.clearToken();
   }
 
+  /// ================= Get autoLogin =================
   @override
   Future<Either<ApiError, UserEntity>> autoLogin() async {
     try {

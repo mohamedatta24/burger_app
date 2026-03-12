@@ -1,6 +1,6 @@
 import 'package:burger_app/features/cart/domain/entities/cart_entity.dart';
 
-class CartModel extends CartEntity {
+class CartModel extends CartEntity  {
   CartModel({
     required super.productId,
     required super.quantity,

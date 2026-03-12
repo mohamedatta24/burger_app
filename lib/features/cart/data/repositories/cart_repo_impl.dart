@@ -1,7 +1,9 @@
 import 'package:burger_app/core/services/api_error.dart';
 import 'package:burger_app/core/services/api_service.dart';
+import 'package:burger_app/features/cart/data/models/cart_get_model.dart';
 import 'package:burger_app/features/cart/data/models/cart_model.dart';
 import 'package:burger_app/features/cart/domain/entities/cart_entity.dart';
+import 'package:burger_app/features/cart/domain/entities/cart_get_entity.dart';
 import 'package:burger_app/features/cart/domain/repositories/cart_repo.dart';
 import 'package:dartz/dartz.dart';
 
@@ -31,16 +33,24 @@ class CartRepoImpl implements CartRepo {
     }
   }
 
-  // @override
-  // Future<Either<ApiError, List<CartEntity>>> getCart() async {
-  //   try {
-  //     final response = await apiService.get("/cart");
-  //     final items = (response["items"] as List)
-  //         .map((item) => CartModel.fromJson(item))
-  //         .toList();
-  //     return Right(items);
-  //   } catch (e) {
-  //     return Left(ApiError(message: e.toString()));
-  //   }
-  // }
+  @override
+  Future<Either<ApiError, CartGetEntity>> getCart() async {
+    try {
+      final response = await apiService.get('/cart');
+      final cart = CartGetModel.fromJson(response['data']).toEntity();
+      return Right(cart);
+    } catch (e) {
+      return Left(ApiError(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApiError, void>> removeFromCart(int itemId) async {
+    try {
+      await apiService.delete("/cart/remove/$itemId");
+      return const Right(null);
+    } catch (e) {
+      return Left(ApiError(message: "Not Data"));
+    }
+  }
 }

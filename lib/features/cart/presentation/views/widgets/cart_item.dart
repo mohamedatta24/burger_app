@@ -1,11 +1,16 @@
 import 'package:burger_app/core/utils/app_colors.dart';
-import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/core/widgets/quantity_counter.dart';
+
+import 'package:burger_app/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:burger_app/features/cart/presentation/cart_cubits/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartItem extends StatefulWidget {
-  const CartItem({super.key, required this.index});
+  const CartItem({super.key, required this.itmes, required this.index});
+
+  final List<CartItemEntity> itmes;
   final int index;
   @override
   State<CartItem> createState() => _CartItemState();
@@ -16,6 +21,7 @@ class _CartItemState extends State<CartItem> {
 
   @override
   Widget build(BuildContext context) {
+    final item = widget.itmes[widget.index];
     return Container(
       padding: const EdgeInsets.only(
         left: 16.0,
@@ -30,10 +36,24 @@ class _CartItemState extends State<CartItem> {
       child: Row(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(Assets.imagesCard2),
-              const Text(
-                "Cheeseburger\nWendy's Burger",
+              Image.network(
+                item.image,
+                fit: BoxFit.fill,
+                width: 100,
+                height: 100,
+              ),
+              Text(
+                item.name,
+                style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                item.price,
                 style: TextStyle(
                   color: AppColors.white,
                   fontSize: 14.0,
@@ -50,7 +70,7 @@ class _CartItemState extends State<CartItem> {
                   heroTagOnAdd: "add_btn_${widget.index}",
                   heroTagOnRemove: "remove_btn_${widget.index}",
                   colorButton: AppColors.backgroundDark,
-                  quantity: quantity,
+                  quantity: widget.itmes[widget.index].quantity,
                   onAdd: () {
                     setState(() {
                       quantity++;
@@ -67,7 +87,11 @@ class _CartItemState extends State<CartItem> {
                 CustomButton(
                   borderRadius: BorderRadius.circular(50.0),
                   text: 'Remove',
-                  onTap: () {},
+                  onTap: () {
+                    context.read<CartCubit>().removeItem(
+                      widget.itmes[widget.index].itemId,
+                    );
+                  },
                 ),
               ],
             ),

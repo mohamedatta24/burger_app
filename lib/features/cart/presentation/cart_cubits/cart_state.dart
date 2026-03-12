@@ -13,6 +13,12 @@ class CartSuccess extends CartState {
   CartSuccess(this.items);
 }
 
+class CartGetSuccess extends CartState {
+  final CartGetEntity cart;
+
+  CartGetSuccess( this.cart);
+}
+
 class CartFailure extends CartState {
   final String errorMessage;
 
