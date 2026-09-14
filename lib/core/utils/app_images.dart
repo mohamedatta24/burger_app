@@ -2,6 +2,12 @@
 class Assets {
   Assets._();
   
+  static const String imagesApple = "assets/images/apple.svg";
+
+  static const String imagesFacebook = "assets/images/facebook.svg";
+
+  static const String imagesGoogle = "assets/images/google.svg";
+
   static const String imagesLogoBurger = "assets/images/logo_burger.svg";
 
   static const String imagesOnBoarding1 = "assets/images/on_boarding_1.png";
