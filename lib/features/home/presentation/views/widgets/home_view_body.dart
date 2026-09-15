@@ -1,3 +1,6 @@
+import 'package:burger_app/core/theme/app_colors.dart';
+import 'package:burger_app/core/utils/app_images.dart';
+import 'package:burger_app/features/home/presentation/views/widgets/card_item_grid_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/category_item_list_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/custom_info_user.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/search_text_field.dart';
@@ -10,13 +13,22 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          const CustomInfoUser(),
-          const SizedBox(height: 16.0),
-          const SearchTextField(),
-          const SizedBox(height: 16.0),
-          const CategoryItemListView(),
+
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const SliverToBoxAdapter(
+            child: Column(
+              children: [
+                CustomInfoUser(),
+                SizedBox(height: 16.0),
+                SearchTextField(),
+                SizedBox(height: 16.0),
+                CategoryItemListView(),
+              ],
+            ),
+          ),
+          const CardItemGridView(),
         ],
       ),
     );
