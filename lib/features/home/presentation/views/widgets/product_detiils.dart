@@ -13,44 +13,51 @@ class ProductDetiils extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 300),
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: Image.asset(Assets.imagesBurger),
-                      ),
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        Center(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(maxHeight: 250),
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: Image.asset(Assets.imagesBurger),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "Cheeseburger Wendy's Burger",
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 16.0),
+                        const Text(
+                          textAlign: TextAlign.center,
+                          "Where fresh ingredients and melted cheese come together for the ultimate burger experience, delivering flavor that keeps you coming back for more",
+                          style: TextStyle(
+                            height: 1.5,
+                            color: AppColors.grey,
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const Text(
-                    "Cheeseburger Wendy's Burger",
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 16.0),
-                  const Text(
-                    textAlign: TextAlign.center,
-                    "Where fresh ingredients and melted cheese come together for the ultimate burger experience, delivering flavor that keeps you coming back for more",
-                    style: TextStyle(
-                      height: 1.5,
-                      color: AppColors.grey,
-                      fontSize: 14.0,
-                    ),
-                  ),
-                ],
+                    const Expanded(child: SizedBox(height: 32.0)),
+                    CustomQuantityAndPrice(),
+                    const SizedBox(height: 16.0),
+                    const CustomButton(text: "Add To Cart"),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+                  ],
+                ),
               ),
-              const Expanded(child: SizedBox(height: 16.0)),
-              CustomQuantityAndPrice(),
-              const SizedBox(height: 16.0),
-              const CustomButton(text: "Add To Cart"),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
             ],
           ),
         ),
@@ -58,4 +65,3 @@ class ProductDetiils extends StatelessWidget {
     );
   }
 }
-
