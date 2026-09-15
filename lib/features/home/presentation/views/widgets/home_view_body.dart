@@ -1,5 +1,3 @@
-import 'package:burger_app/core/theme/app_colors.dart';
-import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/card_item_grid_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/category_item_list_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/custom_info_user.dart';
