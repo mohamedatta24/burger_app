@@ -14,6 +14,7 @@ class LoginViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -30,7 +31,7 @@ class LoginViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             const Text(
-              "We're excited to have you back, can't wait to\nsee what you've been up to since you last logged in.",
+              "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
               style: TextStyle(fontSize: 14.0, color: AppColors.grey),
             ),
             const SizedBox(height: 55),
@@ -64,8 +65,10 @@ class LoginViewBody extends StatelessWidget {
               image: Assets.imagesApple,
               title: "Sign in with Apple",
             ),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
           ],
         ),
+
       ),
     );
   }

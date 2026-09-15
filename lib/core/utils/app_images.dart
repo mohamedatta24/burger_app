@@ -15,5 +15,7 @@ class Assets {
   static const String imagesOnBoarding2 = "assets/images/on_boarding_2.png";
 
   static const String imagesOnBoarding3 = "assets/images/on_boarding_3.png";
+
+  static const String imagesUser = "assets/images/user.png";
 }
 

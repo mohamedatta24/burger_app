@@ -27,7 +27,7 @@ class SignViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             const Text(
-              "Sign up now and start exploring all that our app has to offer.\nWe're excited to welcome you to our community!",
+              "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!",
               style: TextStyle(fontSize: 14.0, color: AppColors.grey),
             ),
             const SizedBox(height: 55.0),

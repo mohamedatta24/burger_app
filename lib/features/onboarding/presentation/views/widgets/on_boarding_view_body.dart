@@ -29,6 +29,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     return Column(
       children: [
         Expanded(child: OnBoardingItemPageView(controller: pageController)),
+        const SizedBox(height: 32),
         CustomDotIndicator(controller: pageController),
         const SizedBox(height: 32),
         Padding(
