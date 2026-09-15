@@ -47,7 +47,7 @@ class CardItem extends StatelessWidget {
                       Text(
                         "4.6",
                         style: TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 14.0,
                           fontWeight: FontWeight.bold,
                           color: AppColors.white,
                         ),
@@ -55,7 +55,11 @@ class CardItem extends StatelessWidget {
                     ],
                   ),
 
-                  FaIcon(FontAwesomeIcons.solidHeart, color: Colors.red),
+                  FaIcon(
+                    FontAwesomeIcons.solidHeart,
+                    color: Colors.red,
+                    size: 20.0,
+                  ),
                 ],
               ),
               SizedBox(height: 5.0),
@@ -64,7 +68,7 @@ class CardItem extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: AppColors.white,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                 ),
               ),
             ],

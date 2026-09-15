@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(DevicePreview(
-    enabled: false,
+    enabled: true,
     builder: (context) => const BurgerApp()));
 }
 
