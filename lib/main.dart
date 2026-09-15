@@ -17,7 +17,7 @@ class BurgerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: AppColors.black),
-      home: const OnBoardingView(),
+      home: const SignupView(),
     );
   }
 }

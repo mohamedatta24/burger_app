@@ -5,6 +5,7 @@ import 'package:burger_app/features/auth/presentation/views/login/widgets/custom
 import 'package:burger_app/features/auth/presentation/views/login/widgets/custom_social_button.dart';
 import 'package:burger_app/features/auth/presentation/views/login/widgets/custom_text_form_field.dart';
 import 'package:burger_app/features/auth/presentation/views/login/widgets/dont_have_an_account.dart';
+import 'package:burger_app/features/auth/presentation/views/login/widgets/password_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -32,12 +33,9 @@ class LoginViewBody extends StatelessWidget {
             style: TextStyle(fontSize: 14.0, color: AppColors.grey),
           ),
           const SizedBox(height: 55),
-          const CustomTextFormField(text: "Email", icon: Icons.email),
+          const CustomTextFormField(text: "Email", suffixIcon: Icon(Icons.email)),
           const SizedBox(height: 16.0),
-          const CustomTextFormField(
-            text: "Password",
-            icon: Icons.remove_red_eye,
-          ),
+          PasswordTextFormField(),
           const SizedBox(height: 8.0),
           CustomForgotPassword(onTap: () {}),
           const SizedBox(height: 32.0),
@@ -67,3 +65,5 @@ class LoginViewBody extends StatelessWidget {
     );
   }
 }
+
+

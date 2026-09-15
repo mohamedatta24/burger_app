@@ -1,6 +1,7 @@
 import 'package:burger_app/core/theme/app_colors.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/features/auth/presentation/views/login/widgets/custom_text_form_field.dart';
+import 'package:burger_app/features/auth/presentation/views/login/widgets/password_text_form_field.dart';
 import 'package:burger_app/features/auth/presentation/views/signup/widgets/already_have_an_account.dart';
 import 'package:flutter/material.dart';
 
@@ -29,14 +30,17 @@ class SignViewBody extends StatelessWidget {
             style: TextStyle(fontSize: 14.0, color: AppColors.grey),
           ),
           const SizedBox(height: 55.0),
-          const CustomTextFormField(text: "Name", icon: Icons.person),
-          const SizedBox(height: 16.0),
-          const CustomTextFormField(text: "Email", icon: Icons.email),
+          const CustomTextFormField(
+            text: "Name",
+            suffixIcon: Icon(Icons.person),
+          ),
           const SizedBox(height: 16.0),
           const CustomTextFormField(
-            text: "Password",
-            icon: Icons.remove_red_eye,
+            text: "Email",
+            suffixIcon: Icon(Icons.email),
           ),
+          const SizedBox(height: 16.0),
+          const PasswordTextFormField(),
           const SizedBox(height: 32.0),
           const CustomButton(text: "Signup"),
           const SizedBox(height: 16.0),
@@ -46,4 +50,3 @@ class SignViewBody extends StatelessWidget {
     );
   }
 }
-
