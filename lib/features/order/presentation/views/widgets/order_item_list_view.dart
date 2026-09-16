@@ -1,19 +1,20 @@
-import 'package:burger_app/features/cart/presentation/views/widgets/cart_item.dart';
+import 'package:burger_app/features/order/presentation/views/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 
-class CartItemListView extends StatelessWidget {
-  const CartItemListView({super.key});
+class OrderItemListView extends StatelessWidget {
+  const OrderItemListView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      itemCount: 2,
+      itemCount: 5,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
-          child: const CartItem(),
+          child: const OrderItem(),
         );
       },
     );
