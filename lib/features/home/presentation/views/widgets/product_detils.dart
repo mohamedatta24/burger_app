@@ -1,15 +1,31 @@
 import 'package:burger_app/core/theme/app_colors.dart';
-import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/custom_quantity_and_price.dart';
 import 'package:flutter/material.dart';
 
-class ProductDetiils extends StatelessWidget {
-  const ProductDetiils({super.key});
+class ProductDetils extends StatelessWidget {
+  const ProductDetils({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.price,
+  });
 
+  final String image;
+  final String title;
+  final String price;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, color: AppColors.white, size: 28.0),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -26,13 +42,13 @@ class ProductDetiils extends StatelessWidget {
                             constraints: BoxConstraints(maxHeight: 250),
                             child: AspectRatio(
                               aspectRatio: 1,
-                              child: Image.asset(Assets.imagesBurger),
+                              child: Image.asset(image),
                             ),
                           ),
                         ),
-                        const Text(
-                          "Cheeseburger Wendy's Burger",
-                          style: TextStyle(
+                        Text(
+                          title,
+                          style: const TextStyle(
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
                             color: AppColors.white,
@@ -51,7 +67,7 @@ class ProductDetiils extends StatelessWidget {
                       ],
                     ),
                     const Expanded(child: SizedBox(height: 32.0)),
-                    CustomQuantityAndPrice(),
+                    CustomQuantityAndPrice(price: price),
                     const SizedBox(height: 16.0),
                     const CustomButton(text: "Add To Cart"),
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),

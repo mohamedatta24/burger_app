@@ -1,4 +1,5 @@
 import 'package:burger_app/core/widgets/custom_bottom_navigation_bar.dart';
+import 'package:burger_app/features/cart/presentation/views/cart_view.dart';
 import 'package:burger_app/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +13,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   List<Widget> views = const [
     HomeViewBody(),
-    SizedBox(
-      child: Center(
-        child: Text(
-          "Shawali",
-          style: TextStyle(fontSize: 40, color: Colors.red),
-        ),
-      ),
-    ),
+    CartView(),
     SizedBox(
       child: Center(
         child: Text(
