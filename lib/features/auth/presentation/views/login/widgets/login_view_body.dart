@@ -1,3 +1,4 @@
+import 'package:burger_app/core/router/router_name.dart';
 import 'package:burger_app/core/theme/app_colors.dart';
 import 'package:burger_app/core/utils/app_images.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
@@ -44,9 +45,18 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 8.0),
             CustomForgotPassword(onTap: () {}),
             const SizedBox(height: 32.0),
-            const CustomButton(text: "Login"),
+            CustomButton(
+              text: "Login",
+              onTap: () {
+                Navigator.pushReplacementNamed(context, RouterName.home);
+              },
+            ),
             const SizedBox(height: 16.0),
-            DontHaveAnAccount(onTap: () {}),
+            DontHaveAnAccount(
+              onTap: () {
+                Navigator.pushNamed(context, RouterName.signup);
+              },
+            ),
             const SizedBox(height: 32.0),
             CustomSocialButton(
               onTap: () {},
@@ -68,7 +78,6 @@ class LoginViewBody extends StatelessWidget {
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
           ],
         ),
-
       ),
     );
   }

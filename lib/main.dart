@@ -1,5 +1,6 @@
+import 'package:burger_app/core/router/app_router.dart';
+import 'package:burger_app/core/router/router_name.dart';
 import 'package:burger_app/core/theme/app_colors.dart';
-import 'package:burger_app/features/home/presentation/views/home_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,8 @@ class BurgerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: AppColors.black),
-      home: const HomeView(),
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: RouterName.onBoarding,
     );
   }
 }

@@ -9,12 +9,7 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        bottom: 16.0,
-        right: 16.0,
-        left: 16.0,
-        top: 8.0,
-      ),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: const Color(0xff1B1C1F),
         borderRadius: BorderRadius.circular(16.0),
@@ -55,7 +50,6 @@ class OrderItem extends StatelessWidget {
                   ),
                 ],
               ),
-
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: 130),
                 child: AspectRatio(
@@ -65,7 +59,7 @@ class OrderItem extends StatelessWidget {
               ),
             ],
           ),
-          CustomButton(text: "Re Order"),
+          const CustomButton(text: "Re Order", height: 50),
         ],
       ),
     );

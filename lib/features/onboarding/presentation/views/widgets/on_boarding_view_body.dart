@@ -1,3 +1,4 @@
+import 'package:burger_app/core/router/router_name.dart';
 import 'package:burger_app/core/widgets/custom_button.dart';
 import 'package:burger_app/features/onboarding/presentation/views/widgets/custom_dot_indicator.dart';
 import 'package:burger_app/features/onboarding/presentation/views/widgets/on_boarding_item_page_view.dart';
@@ -43,7 +44,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   curve: Curves.easeInOut,
                 );
               } else {
-                // Navigate to Home
+                Navigator.pushReplacementNamed(context, RouterName.login);
               }
             },
           ),

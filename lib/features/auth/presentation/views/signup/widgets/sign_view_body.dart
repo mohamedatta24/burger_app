@@ -45,7 +45,11 @@ class SignViewBody extends StatelessWidget {
             const SizedBox(height: 32.0),
             const CustomButton(text: "Signup"),
             const SizedBox(height: 16.0),
-            AlreadyHaveAnAccount(),
+            AlreadyHaveAnAccount(
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
